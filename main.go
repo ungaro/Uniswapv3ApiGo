@@ -199,10 +199,6 @@ func main() {
 
 func getPools(c *gin.Context, id string, output string) interface{} {
 
-	//fmt.Println(IsValidAddress(id)) // true
-
-	fmt.Println("HELLO") // true
-
 	graphqlClient := graphql.NewClient("https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3")
 	graphqlRequest := graphql.NewRequest(poolsToken0GQL)
 
@@ -347,7 +343,6 @@ func volumeByAssetId(c *gin.Context) {
 	if err := graphqlClient.Run(context.Background(), graphqlRequest, &graphqlResponse); err != nil {
 		panic(err)
 	}
-	//	fmt.Println(graphqlResponse) // true
 
 	var totalVolume float64
 
@@ -364,7 +359,6 @@ func volumeByAssetId(c *gin.Context) {
 	fmt.Printf("%f\n", totalVolume)
 
 	graphqlResponse["volume"] = totalVolume
-	//response := [{"totalVolume": totalVolume,"volume":graphqlResponse["poolDayDatas"]}]
 
 	c.IndentedJSON(http.StatusOK, graphqlResponse)
 
