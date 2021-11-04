@@ -153,7 +153,6 @@ query ($blockNumber: String!){ transactions(
 
 `
 
-type dict map[string]interface{}
 type PoolList struct {
 	Pools []Pool
 }
